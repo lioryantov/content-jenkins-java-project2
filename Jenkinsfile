@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+     label 'master'
+  }
 
   stages{ 
     stage ('Unit Tests') {
@@ -18,7 +20,7 @@ pipeline {
         label 'apache'
     }
       steps {
-        sh "cp dist/rectangle.jar /var/www/html/rectangles/all/"
+        sh "sudo cp dist/rectangle.jar /var/www/html/rectangles/all/"
       }
     }
   }
