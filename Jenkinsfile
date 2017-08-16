@@ -29,9 +29,8 @@ pipeline {
     always {
 	  archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
 	}
-  }
+  
    
-  post{
    success {
      emailext(
             subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to Master",
@@ -40,9 +39,8 @@ pipeline {
             to: "ly107h@att.com"
           )
          } 
-  }
+  
 
-  post {
     failure {
       emailext(
         subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
